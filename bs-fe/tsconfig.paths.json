@@ -5,11 +5,20 @@
             "@store": [
                 "./store"
             ],
+            "@store/*": [
+                "./store/*"
+            ],
             "@style": [
                 "./styles"
             ],
             "@style/*": [
                 "./styles/*"
+            ],
+            "@hooks": [
+                "./hooks"
+            ],
+            "@api": [
+                "./api"
             ]
         }
     }

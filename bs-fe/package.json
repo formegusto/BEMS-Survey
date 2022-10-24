@@ -1,9 +1,10 @@
 {
-  "name": "bems-survey",
+  "name": "bems-survey-fe",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
     "@craco/craco": "^6.4.5",
+    "@tanstack/react-query": "^4.13.0",
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^13.0.0",
     "@testing-library/user-event": "^13.2.1",
@@ -13,7 +14,13 @@
     "@types/react-dom": "^18.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-redux": "^8.0.4",
+    "react-router-dom": "^6.4.2",
     "react-scripts": "5.0.1",
+    "redux": "^4.2.0",
+    "redux-actions": "^2.6.5",
+    "styled-components": "^5.3.6",
+    "styled-reset": "^4.4.2",
     "typescript": "^4.4.2",
     "web-vitals": "^2.1.0"
   },
@@ -42,6 +49,12 @@
     ]
   },
   "devDependencies": {
-    "craco-alias": "^3.0.1"
+    "@tanstack/react-query-devtools": "^4.13.0",
+    "@types/react-redux": "^7.1.24",
+    "@types/redux": "^3.6.0",
+    "@types/redux-actions": "^2.6.2",
+    "@types/styled-components": "^5.1.26",
+    "craco-alias": "^3.0.1",
+    "redux-devtools-extension": "^2.13.9"
   }
 }

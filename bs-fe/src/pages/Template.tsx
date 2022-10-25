@@ -23,13 +23,6 @@ const Content = styled.main`
   box-sizing: border-box;
 
   overflow-y: scroll;
-
-  & > .slider {
-    width: 100%;
-    height: 100%;
-
-    position: relative;
-  }
 `;
 
 export { Template };

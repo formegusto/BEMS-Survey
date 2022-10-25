@@ -3,7 +3,8 @@ import BasicPage from "./basic";
 import DetailPage from "./detail";
 import MainPage from "./main";
 import SuccessPage from "./success";
-import { TransitionGroup, CSSTransition } from "react-transition-group";
+import { CSSTransition } from "react-transition-group";
+import { Slider } from "./styles";
 
 function Pages() {
   const location = useLocation();
@@ -30,11 +31,11 @@ function Pages() {
   );
 
   return (
-    <TransitionGroup className="slider">
-      <CSSTransition key={location.pathname} className="right" timeout={5000}>
+    <Slider>
+      <CSSTransition key={location.pathname} classNames="right" timeout={300}>
         {routes}
       </CSSTransition>
-    </TransitionGroup>
+    </Slider>
   );
 }
 

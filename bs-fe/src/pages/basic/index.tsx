@@ -1,5 +1,5 @@
 function BasicPage() {
-  return <>BasicPage</>;
+  return <div>Basic Page</div>;
 }
 
 export default BasicPage;

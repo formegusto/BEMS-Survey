@@ -22,9 +22,14 @@ const Content = styled.main`
   padding: 18px 12px 0;
   box-sizing: border-box;
 
-  background: #f00;
-
   overflow-y: scroll;
+
+  & > .slider {
+    width: 100%;
+    height: 100%;
+
+    position: relative;
+  }
 `;
 
 export { Template };

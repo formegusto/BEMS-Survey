@@ -1,5 +1,5 @@
 function DetailPage() {
-  return <>DetailPage</>;
+  return <div className="page">DetailPage</div>;
 }
 
 export default DetailPage;

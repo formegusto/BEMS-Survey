@@ -27,4 +27,5 @@ function Pages() {
   return routes;
 }
 
-export default Pages;
+export * from "./Template";
+export { Pages };

@@ -1,5 +1,7 @@
+import { MainComponent } from "@components";
+
 function MainPage() {
-  return <>MainPage</>;
+  return <MainComponent />;
 }
 
 export default MainPage;

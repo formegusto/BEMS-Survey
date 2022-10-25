@@ -17,17 +17,21 @@ export const Slider = styled(TransitionGroup)`
 
   & > .right-exit {
     transform: translateX(0);
+    opacity: 1;
   }
 
   & > .right-exit-active {
     transform: translateX(calc(-100% - 12px));
+    opacity: 0;
   }
 
   & > .right-enter {
     transform: translateX(calc(100% + 12px));
+    opacity: 0;
   }
 
   & > .right-enter-active {
     transform: translateX(0);
+    opacity: 1;
   }
 `;

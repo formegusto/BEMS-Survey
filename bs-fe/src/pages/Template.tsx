@@ -22,7 +22,7 @@ const Content = styled.main`
   padding: 18px 12px 0;
   box-sizing: border-box;
 
-  overflow-y: scroll;
+  overflow-y: visible;
 `;
 
 export { Template };

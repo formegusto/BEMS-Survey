@@ -4,7 +4,7 @@ import DetailPage from "./detail";
 import MainPage from "./main";
 import SuccessPage from "./success";
 import { CSSTransition } from "react-transition-group";
-import { Slider } from "./styles";
+import { PageTransition } from "./styles";
 
 function Pages() {
   const location = useLocation();
@@ -31,11 +31,11 @@ function Pages() {
   );
 
   return (
-    <Slider>
-      <CSSTransition key={location.pathname} classNames="right" timeout={300}>
+    <PageTransition className="transition-wrap">
+      <CSSTransition key={location.pathname} classNames="trans" timeout={300}>
         {routes}
       </CSSTransition>
-    </Slider>
+    </PageTransition>
   );
 }
 

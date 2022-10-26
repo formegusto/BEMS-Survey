@@ -13,8 +13,8 @@ export function SelectBox() {
   }, []);
 
   return (
-    <Wrap className={down ? "active" : ""} onClick={toggle}>
-      <label htmlFor="select-box-value">
+    <Wrap className={["select-box", down ? "active" : ""].join(" ")}>
+      <label htmlFor="select-box-value" onClick={toggle}>
         <P3>성별</P3>
         <MdArrowDropDown size={14} />
       </label>
@@ -29,7 +29,7 @@ export function SelectBox() {
 
 const Wrap = styled.div`
   position: relative;
-  width: 56px;
+  width: 64px;
   height: 28px;
   color: ${WHITES[10]};
 
@@ -49,7 +49,7 @@ const Wrap = styled.div`
   }
 
   & > label {
-    width: 56px;
+    width: 100%;
     height: 28px;
     display: flex;
     flex-direction: row;
@@ -57,8 +57,9 @@ const Wrap = styled.div`
 
     cursor: pointer;
 
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
+    padding: 0 8px;
 
     border-bottom: 1px solid ${WHITES[10]};
 
@@ -91,12 +92,14 @@ const DropDownWrap = styled.ul`
   display: flex;
   flex-direction: column;
 
-  width: 56px;
+  width: 100%;
   background: ${WHITES[5]};
 
   padding: 4px 0;
   row-gap: 2px;
   border-radius: 0 0 4px 4px;
+
+  z-index: 6;
 `;
 
 const DropDownItem = styled.li`

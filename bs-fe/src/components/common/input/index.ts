@@ -14,3 +14,12 @@ export const InputGroup = styled.div`
     width: 0;
   }
 `;
+export const SelectGroup = styled.div`
+  display: flex;
+  flex-direction: column;
+  row-gap: 14px;
+
+  & > .select-box {
+    width: 150px;
+  }
+`;

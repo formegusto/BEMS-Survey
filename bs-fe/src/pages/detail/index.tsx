@@ -1,5 +1,7 @@
+import { DetailComponent } from "@components";
+
 function DetailPage() {
-  return <div className="page">DetailPage</div>;
+  return <DetailComponent />;
 }
 
 export default DetailPage;

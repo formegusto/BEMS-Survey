@@ -1,4 +1,4 @@
-import { WHITES } from "@style/color";
+import { BLUE1, WHITES } from "@style/color";
 import styled from "styled-components";
 
 export const Wrap = styled.header`
@@ -7,10 +7,14 @@ export const Wrap = styled.header`
   left: 0;
 
   width: 100%;
-  height: 82px;
+  height: 90px;
 
-  padding: 24px 12px 0;
+  padding: 24px 12px 8px;
   box-sizing: border-box;
+
+  background: ${BLUE1};
+
+  z-index: 3;
 `;
 
 export const Block = styled.div`

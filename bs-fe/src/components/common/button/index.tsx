@@ -3,6 +3,7 @@ import { fontStyles } from "@style/font";
 import styled, { css } from "styled-components";
 import { ButtonProps } from "./types";
 
+export * from "./ArrowButton";
 export const Button = styled.button<ButtonProps>`
   ${fontStyles["tag1"]};
   border: none;

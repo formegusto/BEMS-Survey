@@ -1,4 +1,4 @@
-import BasicComponent from "@components/basic";
+import { BasicComponent } from "@components";
 
 function BasicPage() {
   return <BasicComponent />;

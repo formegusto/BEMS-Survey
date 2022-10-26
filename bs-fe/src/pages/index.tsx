@@ -5,6 +5,7 @@ import MainPage from "./main";
 import SuccessPage from "./success";
 import { CSSTransition } from "react-transition-group";
 import { PageTransition } from "./styles";
+import React from "react";
 
 function Pages() {
   const location = useLocation();

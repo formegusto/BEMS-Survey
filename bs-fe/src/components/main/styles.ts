@@ -2,11 +2,14 @@ import { WHITES } from "@style/color";
 import styled from "styled-components";
 
 export const Wrap = styled.div`
-  top: -100px !important;
-  left: -12px !important;
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
 
   width: 100vw;
   height: 100vh;
+
+  z-index: 255;
 `;
 
 export const BackgroundImg = styled.img`

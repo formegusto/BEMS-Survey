@@ -1,5 +1,7 @@
+import { SuccessComponent } from "@components";
+
 function SuccessPage() {
-  return <>Success</>;
+  return <SuccessComponent />;
 }
 
 export default SuccessPage;

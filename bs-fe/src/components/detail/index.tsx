@@ -28,7 +28,11 @@ function DetailComponent({
       <QuestionGroup>
         {datas.map((d, idx) => (
           <Question key={`detail-question-${idx}`} question={d.question}>
-            <BoxRadio values={d.values} {...register(d._id)} />
+            <BoxRadio
+              values={d.values}
+              {...register(d._id)}
+              setValue={setValue!}
+            />
           </Question>
         ))}
         <Question question="13. 설문 참여자 거주 공간의 만족도에 영향을 주는 주요 요인 3개를 1순위부터 3순위까지 선택해주세요.">

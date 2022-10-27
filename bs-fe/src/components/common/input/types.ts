@@ -14,4 +14,5 @@ export interface SelectBoxProps {
 export interface BoxRadioProps {
   name: string;
   values: (string | number)[];
+  setValue: UseFormSetValue<any>;
 }

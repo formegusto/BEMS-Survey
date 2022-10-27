@@ -35,6 +35,8 @@ function BasicComponent({
           <BoxRadio
             values={["창가", "에어컨", "히터", "해당사항 없음"]}
             {...register("position")}
+            required
+            setValue={setValue!}
           />
         </Question>
         <Question question="3. 공간 내 동료 인원수를 입력해주세요.">

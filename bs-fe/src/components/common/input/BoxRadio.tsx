@@ -1,20 +1,38 @@
 import { WHITES } from "@style/color";
 import { fontStyles } from "@style/font";
+import React from "react";
 import styled from "styled-components";
 import { BoxRadioProps } from "./types";
 
-function BoxRadio({ name, values }: BoxRadioProps) {
+function CBoxRadio(
+  {
+    name,
+    values,
+
+    ...htmlProps
+  }: BoxRadioProps & React.HTMLProps<HTMLInputElement>,
+  ref: React.Ref<HTMLInputElement>
+) {
   return (
     <Wrap>
       {values.map((v, idx) => (
         <Block key={idx}>
-          <input id={`${name}-${idx}`} type="radio" name={name} value={v} />
+          <input
+            ref={ref}
+            id={`${name}-${idx}`}
+            type="radio"
+            {...htmlProps}
+            name={name}
+            value={v}
+          />
           <RadioFrame htmlFor={`${name}-${idx}`}>{v}</RadioFrame>
         </Block>
       ))}
     </Wrap>
   );
 }
+
+const BoxRadio = React.forwardRef(CBoxRadio);
 
 const Wrap = styled.div`
   display: flex;

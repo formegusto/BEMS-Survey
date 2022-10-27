@@ -7,40 +7,54 @@ import {
   Question,
   QuestionGroup,
 } from "@components/common";
-import React from "react";
-import { useNavigate } from "react-router-dom";
+import { FBasicInfo, InputProps } from "@store/types";
 import { Wrap } from "./styles";
 
-function BasicComponent() {
-  const navigate = useNavigate();
-  const onNext = React.useCallback(() => {
-    navigate("/detail");
-  }, [navigate]);
-
+function BasicComponent({
+  register,
+  onSubmit,
+  setValue,
+}: InputProps<FBasicInfo>) {
   return (
-    <Wrap>
+    <Wrap onSubmit={onSubmit}>
       <QuestionGroup>
         <Question question="1. 설문 참여자의 성명, 나이, 성별을 입력해주세요.">
           <InputGroup>
-            <TextInput placeholder="성명" />
-            <TextInput placeholder="나이" />
-            <SelectBox title="성별" values={["남", "여"]} />
+            <TextInput placeholder="성명" {...register("name")} required />
+            <TextInput placeholder="나이" {...register("age")} required />
+            <SelectBox
+              title="성별"
+              values={["남", "여"]}
+              {...register("sex")}
+              required
+              setValue={setValue!}
+            />
           </InputGroup>
         </Question>
         <Question question="2. 설문 참여자의 현재 위치를 선택해주세요.">
           <BoxRadio
-            name="position"
             values={["창가", "에어컨", "히터", "해당사항 없음"]}
+            {...register("position")}
           />
         </Question>
         <Question question="3. 공간 내 동료 인원수를 입력해주세요.">
-          <TextInput suffix="명" placeholder="n" />
+          <TextInput
+            suffix="명"
+            placeholder="n"
+            {...register("numOfPeople")}
+            required
+          />
         </Question>
         <Question question="4. 일일 근무시간을 입력해주세요.">
-          <TextInput suffix="시간" placeholder="h" />
+          <TextInput
+            suffix="시간"
+            placeholder="h"
+            {...register("workingTime")}
+            required
+          />
         </Question>
       </QuestionGroup>
-      <ArrowButton onClick={onNext}>다음</ArrowButton>
+      <ArrowButton type="submit">다음</ArrowButton>
     </Wrap>
   );
 }

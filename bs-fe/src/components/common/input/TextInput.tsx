@@ -1,19 +1,28 @@
 import { WHITES } from "@style/color";
 import { fontStyles, Tag1 } from "@style/font";
-import styled, { StyledProps } from "styled-components";
+import React from "react";
+import styled, { StyledComponentProps } from "styled-components";
 import { TextInputProps } from "./types";
 
-export function TextInput({
-  suffix,
-  ...inputProps
-}: TextInputProps & StyledProps<any>) {
+function CTextInput(
+  {
+    suffix,
+    ...inputProps
+  }: TextInputProps & StyledComponentProps<"input", any, {}, any>,
+  ref: React.Ref<HTMLInputElement>
+) {
   return (
     <Wrap className="text-input">
-      <STextInput {...inputProps} className={`${suffix ? "has-suffix" : ""}`} />
+      <STextInput
+        ref={ref}
+        {...inputProps}
+        className={`${suffix ? "has-suffix" : ""}`}
+      />
       {suffix && <Tag1 className="suffix">{suffix}</Tag1>}
     </Wrap>
   );
 }
+export const TextInput = React.forwardRef(CTextInput);
 
 const Wrap = styled.div`
   position: relative;

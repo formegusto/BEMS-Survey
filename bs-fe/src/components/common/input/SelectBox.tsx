@@ -5,7 +5,17 @@ import { fontStyles, P3 } from "@style/font";
 import React from "react";
 import { SelectBoxProps } from "./types";
 
-export function SelectBox({ title, values, isDisable }: SelectBoxProps) {
+function CSelectBox(
+  {
+    name,
+    title,
+    values,
+    isDisable,
+    setValue: setUseValue,
+    ...htmlProps
+  }: SelectBoxProps & React.HTMLProps<HTMLInputElement>,
+  ref: React.Ref<HTMLInputElement>
+) {
   const [down, onDown] = React.useState<boolean>(false);
   const [value, setValue] = React.useState<string | null>(null);
 
@@ -22,6 +32,10 @@ export function SelectBox({ title, values, isDisable }: SelectBoxProps) {
   const onClick = React.useCallback((value: string) => {
     setValue(value);
   }, []);
+
+  React.useEffect(() => {
+    setUseValue(name!, value);
+  }, [name, value, setUseValue]);
 
   React.useEffect(() => {
     if (down) {
@@ -46,7 +60,13 @@ export function SelectBox({ title, values, isDisable }: SelectBoxProps) {
         <P3>{value ? value : title}</P3>
         <MdArrowDropDown size={14} />
       </label>
-      <input id="select-box-value" value={value ? value : ""} />
+      <input
+        name={name}
+        ref={ref}
+        id="select-box-value"
+        {...htmlProps}
+        value={value ? value : ""}
+      />
       <DropDownWrap>
         {values.map((v, idx) => (
           <DropDownItem
@@ -61,6 +81,8 @@ export function SelectBox({ title, values, isDisable }: SelectBoxProps) {
   );
 }
 
+export const SelectBox = React.forwardRef(CSelectBox);
+
 const Wrap = styled.div`
   position: relative;
   width: 64px;
@@ -68,7 +90,13 @@ const Wrap = styled.div`
   color: ${WHITES[10]};
 
   & > input {
-    display: none;
+    position: absolute;
+
+    width: 0;
+    height: 0;
+    opacity: 0;
+    bottom: 0;
+    left: 50%;
   }
 
   & > ul {

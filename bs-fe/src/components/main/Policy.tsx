@@ -45,9 +45,9 @@ const OpacityAnimation = keyframes`
 `;
 
 const Wrap = styled.div`
-  position: fixed;
-  top: 0;
-  left: 0;
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
 
   width: 100vw;
   height: 100vh;

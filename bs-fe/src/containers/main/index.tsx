@@ -17,7 +17,6 @@ function MainContainer() {
 
   const onAgree = React.useCallback(() => {
     setIsAgree(true);
-    setShowPolicy(false);
     navigate("/basic");
   }, [navigate]);
 
@@ -27,10 +26,10 @@ function MainContainer() {
   }, []);
 
   return (
-    <>
+    <div>
       <MainComponent onStart={onStart} />
       {showPolicy && <Policy onAgree={onAgree} onNotAgree={onNotAgree} />}
-    </>
+    </div>
   );
 }
 

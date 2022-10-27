@@ -1,7 +1,7 @@
-import { DetailComponent } from "@components";
+import { DetailContainer } from "@containers";
 
 function DetailPage() {
-  return <DetailComponent />;
+  return <DetailContainer />;
 }
 
 export default DetailPage;

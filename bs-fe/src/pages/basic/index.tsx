@@ -1,7 +1,7 @@
-import { BasicComponent } from "@components";
+import { BasicContainer } from "@containers";
 
 function BasicPage() {
-  return <BasicComponent />;
+  return <BasicContainer />;
 }
 
 export default BasicPage;

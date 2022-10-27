@@ -1,11 +1,9 @@
 import { Button } from "@components/common";
 import { H1, H2 } from "@style/font";
-import { useNavigate } from "react-router-dom";
 import { BackgroundImg, Block, Wrap } from "./styles";
+import { ComponentProps } from "./types";
 
-function MainComponent() {
-  const navigate = useNavigate();
-
+function MainComponent({ onStart }: ComponentProps) {
   return (
     <Wrap>
       <BackgroundImg
@@ -15,7 +13,7 @@ function MainComponent() {
       <Block>
         <H1 className="building">동신대학교 중앙도서관</H1>
         <H2 className="unit">2층 자기주도 학습실</H2>
-        <Button isBlock onClick={() => navigate("/basic")}>
+        <Button isBlock onClick={onStart}>
           설문조사 시작하기
         </Button>
       </Block>
@@ -24,3 +22,4 @@ function MainComponent() {
 }
 
 export { MainComponent };
+export * from "./Policy";

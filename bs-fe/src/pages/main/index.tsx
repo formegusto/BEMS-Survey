@@ -1,7 +1,7 @@
-import { MainComponent } from "@components";
+import { MainContainer } from "@containers";
 
 function MainPage() {
-  return <MainComponent />;
+  return <MainContainer />;
 }
 
 export default MainPage;

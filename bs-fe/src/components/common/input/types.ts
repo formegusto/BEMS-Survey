@@ -7,3 +7,8 @@ export interface SelectBoxProps {
   values: string[];
   isDisable?: boolean;
 }
+
+export interface BoxRadioProps {
+  name: string;
+  values: (string | number)[];
+}

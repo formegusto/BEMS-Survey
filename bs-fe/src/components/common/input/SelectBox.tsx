@@ -46,7 +46,7 @@ export function SelectBox({ title, values, isDisable }: SelectBoxProps) {
         <P3>{value ? value : title}</P3>
         <MdArrowDropDown size={14} />
       </label>
-      <input id="select-box-value" />
+      <input id="select-box-value" value={value ? value : ""} />
       <DropDownWrap>
         {values.map((v, idx) => (
           <DropDownItem

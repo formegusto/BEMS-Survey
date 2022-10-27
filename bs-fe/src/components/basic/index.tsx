@@ -28,7 +28,10 @@ function BasicComponent() {
           </InputGroup>
         </Question>
         <Question question="2. 설문 참여자의 현재 위치를 선택해주세요.">
-          <BoxRadio />
+          <BoxRadio
+            name="position"
+            values={["창가", "에어컨", "히터", "해당사항 없음"]}
+          />
         </Question>
         <Question question="3. 공간 내 동료 인원수를 입력해주세요.">
           <TextInput suffix="명" placeholder="n" />

@@ -1,20 +1,17 @@
 import { WHITES } from "@style/color";
 import { fontStyles } from "@style/font";
 import styled from "styled-components";
+import { BoxRadioProps } from "./types";
 
-function BoxRadio() {
-  const name = "radio";
-
+function BoxRadio({ name, values }: BoxRadioProps) {
   return (
     <Wrap>
-      {Array(10)
-        .fill(0)
-        .map((_, idx) => (
-          <Block key={idx}>
-            <input id={`${name}-${idx}`} type="radio" name={name} value={idx} />
-            <RadioFrame htmlFor={`${name}-${idx}`}>{idx}</RadioFrame>
-          </Block>
-        ))}
+      {values.map((v, idx) => (
+        <Block key={idx}>
+          <input id={`${name}-${idx}`} type="radio" name={name} value={v} />
+          <RadioFrame htmlFor={`${name}-${idx}`}>{v}</RadioFrame>
+        </Block>
+      ))}
     </Wrap>
   );
 }
@@ -26,9 +23,12 @@ const Wrap = styled.div`
 
   width: 100%;
   height: 28px;
+
+  column-gap: 10px;
 `;
 
 const Block = styled.div`
+  flex: 1;
   & > input {
     display: none;
   }
@@ -44,14 +44,13 @@ const RadioFrame = styled.label`
   justify-content: center;
   align-items: center;
 
-  width: 24px;
-  height: 24px;
+  height: 27px;
 
-  color: ${WHITES[6]};
+  color: ${WHITES[2]};
   ${fontStyles["tag1"]};
 
   box-sizing: border-box;
-  border: 1px solid ${WHITES[6]};
+  border: 1px solid ${WHITES[2]};
 
   transition: 0.3s;
 `;

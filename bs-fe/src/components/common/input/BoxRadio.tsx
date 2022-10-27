@@ -23,9 +23,24 @@ function CBoxRadio(
     setUseValue(name!, value);
   }, [name, value, setUseValue]);
 
+  const onFocus = React.useCallback((e: React.FocusEvent<HTMLInputElement>) => {
+    const { top } = e.target.getBoundingClientRect();
+
+    window.scrollTo({
+      top: top - 152.5,
+    });
+  }, []);
+
   return (
     <Wrap>
-      <input ref={ref} type="text" {...htmlProps} value={value ? value : ""} />
+      <input
+        id={`radio-text-${name}`}
+        ref={ref}
+        type="text"
+        {...htmlProps}
+        value={value ? value : ""}
+        onFocus={onFocus}
+      />
       {values.map((v, idx) => (
         <Block
           key={`name-radio-${idx}`}

@@ -62,3 +62,8 @@ export const datas: IQuestion[] = [
     values: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
   },
 ];
+
+export interface ComponentProps {
+  rank1Watch: string | null;
+  rank2Watch: string | null;
+}

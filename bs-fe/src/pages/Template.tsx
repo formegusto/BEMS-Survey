@@ -18,6 +18,7 @@ const Content = styled.main`
   top: 82px;
   width: 100%;
   height: calc(100vh - 82px);
+  height: calc(var(--vh) * 100 - 82px);
 
   padding: 18px 12px 0;
   box-sizing: border-box;

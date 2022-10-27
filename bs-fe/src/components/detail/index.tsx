@@ -7,22 +7,16 @@ import {
   SelectGroup,
 } from "@components/common";
 import { FDetailInfo, InputProps } from "@store/types";
-import React from "react";
-import { useNavigate } from "react-router-dom";
 import { Wrap } from "./styles";
-import { datas } from "./types";
+import { ComponentProps, datas } from "./types";
 
 function DetailComponent({
+  rank1Watch,
+  rank2Watch,
   register,
   onSubmit,
   setValue,
-}: InputProps<FDetailInfo>) {
-  const navigate = useNavigate();
-
-  const onClick = React.useCallback(() => {
-    navigate("/success");
-  }, [navigate]);
-
+}: ComponentProps & InputProps<FDetailInfo>) {
   return (
     <Wrap onSubmit={onSubmit}>
       <QuestionGroup>
@@ -32,6 +26,7 @@ function DetailComponent({
               values={d.values}
               {...register(d._id)}
               setValue={setValue!}
+              required
             />
           </Question>
         ))}
@@ -42,25 +37,28 @@ function DetailComponent({
               values={["남", "여"]}
               {...register("1rank")}
               setValue={setValue!}
+              required
             />
             <SelectBox
               title="2순위"
               values={["남", "여"]}
               {...register("2rank")}
               setValue={setValue!}
-              isDisable
+              isDisable={!rank1Watch}
+              required
             />
             <SelectBox
               title="3순위"
               values={["남", "여"]}
               {...register("3rank")}
               setValue={setValue!}
-              isDisable
+              isDisable={!rank2Watch}
+              required
             />
           </SelectGroup>
         </Question>
       </QuestionGroup>
-      <ArrowButton onClick={onClick}>제출</ArrowButton>
+      <ArrowButton type="submit">제출</ArrowButton>
     </Wrap>
   );
 }

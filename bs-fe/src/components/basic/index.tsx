@@ -24,7 +24,7 @@ function BasicComponent() {
           <InputGroup>
             <TextInput placeholder="성명" />
             <TextInput placeholder="나이" />
-            <SelectBox />
+            <SelectBox title="성별" values={["남", "여"]} />
           </InputGroup>
         </Question>
         <Question question="2. 설문 참여자의 현재 위치를 선택해주세요.">

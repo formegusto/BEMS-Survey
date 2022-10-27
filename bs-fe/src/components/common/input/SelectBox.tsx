@@ -1,27 +1,61 @@
 import styled from "styled-components";
 import { MdArrowDropDown } from "react-icons/md";
-import { WHITES } from "@style/color";
+import { BLUE1, WHITES } from "@style/color";
 import { fontStyles, P3 } from "@style/font";
 import React from "react";
+import { SelectBoxProps } from "./types";
 
-export function SelectBox() {
+export function SelectBox({ title, values, isDisable }: SelectBoxProps) {
   const [down, onDown] = React.useState<boolean>(false);
+  const [value, setValue] = React.useState<string | null>(null);
 
   const toggle = React.useCallback((e: React.MouseEvent) => {
     e.preventDefault();
+    e.stopPropagation();
     onDown((prev) => !prev);
   }, []);
 
+  const hideDrop = React.useCallback(() => {
+    onDown(false);
+  }, []);
+
+  const onClick = React.useCallback((value: string) => {
+    setValue(value);
+  }, []);
+
+  React.useEffect(() => {
+    if (down) {
+      window.addEventListener("click", hideDrop);
+    } else {
+      window.removeEventListener("click", hideDrop);
+    }
+  }, [hideDrop, down]);
+
   return (
-    <Wrap className={["select-box", down ? "active" : ""].join(" ")}>
-      <label htmlFor="select-box-value" onClick={toggle}>
-        <P3>성별</P3>
+    <Wrap
+      className={[
+        "select-box",
+        down ? "active" : "",
+        isDisable ? "disable" : "",
+      ].join(" ")}
+    >
+      <label
+        htmlFor="select-box-value"
+        onClick={isDisable ? undefined : toggle}
+      >
+        <P3>{value ? value : title}</P3>
         <MdArrowDropDown size={14} />
       </label>
       <input id="select-box-value" />
       <DropDownWrap>
-        <DropDownItem>남</DropDownItem>
-        <DropDownItem>여</DropDownItem>
+        {values.map((v, idx) => (
+          <DropDownItem
+            key={`${title}-select-${idx}`}
+            onClick={() => onClick(v)}
+          >
+            {v}
+          </DropDownItem>
+        ))}
       </DropDownWrap>
     </Wrap>
   );
@@ -82,6 +116,10 @@ const Wrap = styled.div`
       }
     }
   }
+
+  &.disable {
+    opacity: 0.5;
+  }
 `;
 
 const DropDownWrap = styled.ul`
@@ -93,22 +131,25 @@ const DropDownWrap = styled.ul`
   flex-direction: column;
 
   width: 100%;
-  background: ${WHITES[5]};
+  background: ${WHITES[10]};
 
   padding: 4px 0;
   row-gap: 2px;
   border-radius: 0 0 4px 4px;
 
   z-index: 6;
+  color: ${BLUE1};
 `;
 
 const DropDownItem = styled.li`
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
 
   width: 56px;
   height: 28px;
 
+  width: 100%;
+  padding: 0 16px;
   ${fontStyles["p3"]};
 `;

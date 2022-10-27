@@ -6,7 +6,7 @@ function SuccessComponent() {
   return (
     <Wrap>
       <BackgroundImg
-        src="http://localhost:8080/static/building/building-1656563478294.jpeg"
+        src={`${process.env.REACT_APP_BACK_END_API_SERVER}/static/building/building-1656563478294.jpeg`}
         alt="building-img"
       />
       <Block>

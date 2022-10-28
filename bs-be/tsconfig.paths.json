@@ -14,7 +14,7 @@
             "@models/*": [
                 "./models/*"
             ],
-            "@utll": [
+            "@utlls": [
                 "./utils"
             ]
         }

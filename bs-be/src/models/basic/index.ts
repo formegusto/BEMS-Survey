@@ -13,6 +13,7 @@ const BasicSchema = new Schema<IBasicInfo>(
   {
     collection: "BasicInfo",
     timestamps: true,
+    versionKey: false,
   }
 );
 

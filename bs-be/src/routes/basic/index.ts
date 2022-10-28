@@ -15,8 +15,9 @@ routes.post(
 
     try {
       const basicInfo = await BasicInfo.create(body);
+      const token = await basicInfo.getToken();
 
-      return res.status(StatusCodes.CREATED).json(basicInfo.toPlainObject());
+      return res.status(StatusCodes.CREATED).json({ token });
     } catch (err) {
       return next(err);
     }

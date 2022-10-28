@@ -2,6 +2,12 @@
     "compilerOptions": {
         "baseUrl": "./src",
         "paths": {
+            "@routes": [
+                "./routes"
+            ],
+            "@models": [
+                "./models"
+            ]
         }
     }
 }

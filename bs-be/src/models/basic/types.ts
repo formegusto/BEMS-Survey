@@ -3,6 +3,8 @@ import { Schema } from "mongoose";
 import { BasicModel } from ".";
 import jwt from "jsonwebtoken";
 import { MonitorModel } from "@models/monitor";
+import { ResponseError } from "@routes/error";
+import { StatusCodes } from "http-status-codes";
 
 export interface IBasicInfo {
   _id?: Schema.Types.ObjectId | string;
@@ -61,6 +63,31 @@ export class BasicInfo implements IBasicInfo {
     });
 
     return token;
+  }
+
+  static async getFromToken(token: string): Promise<BasicInfo> {
+    const secret = process.env.JWT_SECRET!;
+
+    if (!token)
+      throw new ResponseError(
+        StatusCodes.UNAUTHORIZED,
+        "토큰이 발행되지 않았습니다."
+      );
+
+    try {
+      const simpleBasic = jwt.verify(token, secret!) as BasicInfoFromToken;
+      const document = await BasicModel.findById(simpleBasic._id);
+      console.log("tokenCheck", document);
+
+      if (!document) throw new Error();
+
+      return new BasicInfo(document.toObject());
+    } catch (err) {
+      throw new ResponseError(
+        StatusCodes.FORBIDDEN,
+        "유효하지 않은 토큰 입니다."
+      );
+    }
   }
 
   static async create(basicInfo: IBasicInfo): Promise<BasicInfo> {

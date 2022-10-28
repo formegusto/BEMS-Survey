@@ -5,8 +5,17 @@
             "@routes": [
                 "./routes"
             ],
+            "@routes/*": [
+                "./routes/*"
+            ],
             "@models": [
                 "./models"
+            ],
+            "@models/*": [
+                "./models/*"
+            ],
+            "@utll": [
+                "./utils"
             ]
         }
     }

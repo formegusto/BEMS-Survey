@@ -5,6 +5,7 @@ const SurveySchema = new Schema<ISurvey>(
   {
     result: { type: Schema.Types.Mixed, required: true },
     userId: { type: Schema.Types.ObjectId, required: true },
+    monitorId: { type: Schema.Types.ObjectId, required: true },
   },
   {
     collection: "Survey",

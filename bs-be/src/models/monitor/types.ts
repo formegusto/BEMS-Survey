@@ -6,6 +6,7 @@ import { MonitorModel } from ".";
 export interface IMonitor {
   _id?: Schema.Types.ObjectId | string;
   token: string;
+  userId: Schema.Types.ObjectId | string;
 
   startAt: Date;
   doneAt?: Date;
@@ -14,6 +15,7 @@ export interface IMonitor {
 export class Monitor implements IMonitor {
   _id?: Schema.Types.ObjectId | string;
   token!: string;
+  userId!: Schema.Types.ObjectId | string;
 
   startAt!: Date;
   doneAt?: Date;

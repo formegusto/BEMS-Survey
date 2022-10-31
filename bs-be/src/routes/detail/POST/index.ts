@@ -24,6 +24,7 @@ routes.post(
           ...req.body,
         },
         userId: basic._id,
+        monitorId: monitor._id,
       });
 
       return res.status(StatusCodes.CREATED).json();

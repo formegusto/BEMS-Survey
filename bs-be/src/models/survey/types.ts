@@ -5,4 +5,5 @@ export interface ISurvey {
     [key: string]: string | number;
   };
   userId: Schema.Types.ObjectId;
+  monitorId: Schema.Types.ObjectId;
 }

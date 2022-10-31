@@ -57,8 +57,10 @@ export class BasicInfo implements IBasicInfo {
       algorithm: "HS256",
       expiresIn: "1h",
     });
+
     await MonitorModel.create({
       token,
+      userId: this._id,
       startAt: Date.now(),
     });
 

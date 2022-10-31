@@ -16,6 +16,9 @@
             ],
             "@utlls": [
                 "./utils"
+            ],
+            "@mw": [
+                "./middlewares"
             ]
         }
     }

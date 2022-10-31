@@ -10,3 +10,12 @@ export const getQuestion = async () =>
       },
     })
   ).data;
+
+export const getQuestionTypes = async () =>
+  (
+    await surveyClient.get<string[]>(`${basePATH}/type`, {
+      headers: {
+        authorization: localStorage.getItem("token")!,
+      },
+    })
+  ).data;

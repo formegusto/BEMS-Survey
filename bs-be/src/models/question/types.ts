@@ -9,6 +9,7 @@ export interface IQuestion {
   question: string;
   values: number[];
   sequence?: number;
+  type?: string;
 }
 
 export class Question implements IQuestion {
@@ -16,6 +17,7 @@ export class Question implements IQuestion {
   question!: string;
   values!: number[];
   sequence?: number;
+  type?: string;
 
   constructor(document: IQuestion) {
     Object.assign(this, document);

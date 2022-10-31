@@ -6,6 +6,7 @@ const QuestionSchema = new Schema<IQuestion>(
     question: { type: String, required: true },
     values: [{ type: Number, required: true }],
     sequence: { type: Number },
+    type: { type: String },
   },
   {
     collection: "Question",

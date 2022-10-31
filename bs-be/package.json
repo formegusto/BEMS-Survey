@@ -33,6 +33,7 @@
   "_moduleAliases": {
     "@routes": "dist/routes",
     "@models": "dist/models",
-    "@utils": "dist/utils"
+    "@utils": "dist/utils",
+    "@mw": "dist/middlewares"
   }
 }

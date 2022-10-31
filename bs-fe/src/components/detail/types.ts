@@ -67,4 +67,5 @@ export interface ComponentProps {
   rank1Watch: string | null;
   rank2Watch: string | null;
   data: IQuestion[];
+  types: string[];
 }

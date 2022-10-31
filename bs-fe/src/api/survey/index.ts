@@ -5,3 +5,4 @@ export const surveyClient = axios.create({
   baseURL,
 });
 export * from "./basic";
+export * from "./question";

@@ -8,9 +8,10 @@ import {
 } from "@components/common";
 import { FDetailInfo, InputProps } from "@store/types";
 import { Wrap } from "./styles";
-import { ComponentProps, datas } from "./types";
+import { ComponentProps } from "./types";
 
 function DetailComponent({
+  data,
   rank1Watch,
   rank2Watch,
   register,
@@ -20,8 +21,11 @@ function DetailComponent({
   return (
     <Wrap onSubmit={onSubmit}>
       <QuestionGroup>
-        {datas.map((d, idx) => (
-          <Question key={`detail-question-${idx}`} question={d.question}>
+        {data.map((d, idx) => (
+          <Question
+            key={`detail-question-${idx}`}
+            question={`${d.sequence}.${d.question}`}
+          >
             <BoxRadio
               values={d.values}
               {...register(d._id)}

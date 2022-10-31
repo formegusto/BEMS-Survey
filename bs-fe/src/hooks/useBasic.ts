@@ -1,7 +1,7 @@
 import { checkToken, postBasic } from "@api";
 import { RootReducer, SurveyStore } from "@store";
 import { initBasicInfo } from "@store/actions";
-import { FBasicInfo } from "@store/types";
+import { BasicInfo, FBasicInfo } from "@store/types";
 import { useMutation } from "@tanstack/react-query";
 import React from "react";
 import { useDispatch } from "react-redux";
@@ -9,6 +9,7 @@ import { useSelector } from "react-redux";
 
 export type ReturnTypes = [
   token: string | undefined,
+  basicInfo: BasicInfo | undefined,
   postBasic: (basicInfo: FBasicInfo) => void,
   tokenCheck: (token: string) => void
 ];
@@ -38,5 +39,5 @@ export function useBasic(): ReturnTypes {
     if (token) tokenCheckMutate(token);
   }, [token, tokenCheckMutate]);
 
-  return [token, postBasicMutate, tokenCheckMutate];
+  return [token, basicInfo, postBasicMutate, tokenCheckMutate];
 }

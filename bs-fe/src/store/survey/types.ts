@@ -9,6 +9,7 @@ export interface IQuestion {
   _id: string;
   question: string;
   values: (string | number)[];
+  sequence?: number;
 }
 
 export interface FBasicInfo {

@@ -44,7 +44,7 @@ export class Question implements IQuestion {
   }
 
   static async getList(): Promise<IQuestion[]> {
-    return await QuestionModel.find({}, { _id: 0 }, { sort: { sequence: 1 } });
+    return await QuestionModel.find({}, {}, { sort: { sequence: 1 } });
   }
 
   static async create(question: IQuestion): Promise<Question> {

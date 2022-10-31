@@ -9,7 +9,7 @@ function BasicContainer() {
   const navigate = useNavigate();
 
   const { register, handleSubmit, setValue } = useForm<FBasicInfo>({});
-  const [token, postBasic, tokenCheck] = useBasic();
+  const [token, basicInfo, postBasic] = useBasic();
 
   const onSubmit: SubmitHandler<FBasicInfo> = React.useCallback(
     (data) => {
@@ -17,6 +17,14 @@ function BasicContainer() {
     },
     [postBasic]
   );
+
+  React.useEffect(() => {
+    if (basicInfo) navigate("/detail");
+  }, [basicInfo, navigate]);
+
+  React.useEffect(() => {
+    if (token) localStorage.setItem("token", token);
+  }, [token]);
 
   return (
     <BasicComponent

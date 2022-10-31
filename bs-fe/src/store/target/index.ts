@@ -1,11 +1,11 @@
 import { handleActions } from "redux-actions";
 import { Building, INIT_BUILDING, INIT_UNIT, Unit } from "./types";
 
-interface TargetStore {
+export interface TargetStore {
   unit?: Unit;
   building?: Building;
 }
-const targetStore: TargetStore = {};
+export const targetStore: TargetStore = {};
 export const targetReducer = handleActions<TargetStore, any>(
   {
     [INIT_BUILDING]: (state, action) => ({

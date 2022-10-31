@@ -1,4 +1,5 @@
 import { BasicComponent } from "@components";
+import { useBasic } from "@hooks";
 import { FBasicInfo } from "@store/types";
 import React from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
@@ -8,12 +9,13 @@ function BasicContainer() {
   const navigate = useNavigate();
 
   const { register, handleSubmit, setValue } = useForm<FBasicInfo>({});
+  const [token, postBasic, tokenCheck] = useBasic();
+
   const onSubmit: SubmitHandler<FBasicInfo> = React.useCallback(
     (data) => {
-      console.log(data);
-      navigate("/detail");
+      postBasic(data);
     },
-    [navigate]
+    [postBasic]
   );
 
   return (

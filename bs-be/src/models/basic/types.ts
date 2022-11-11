@@ -5,6 +5,7 @@ import jwt from "jsonwebtoken";
 import { MonitorModel } from "@models/monitor";
 import { ResponseError } from "@routes/error";
 import { StatusCodes } from "http-status-codes";
+import { getTimezoneDate } from "@utils";
 
 export interface IBasicInfo {
   _id?: Schema.Types.ObjectId | string;
@@ -93,7 +94,11 @@ export class BasicInfo implements IBasicInfo {
   }
 
   static async create(basicInfo: IBasicInfo): Promise<BasicInfo> {
-    const document = await BasicModel.create(basicInfo);
+    const document = await BasicModel.create({
+      ...basicInfo,
+      createdAt: getTimezoneDate(new Date(Date.now())),
+      updatedAt: getTimezoneDate(new Date(Date.now())),
+    });
     return new BasicInfo(document.toObject());
   }
 }

@@ -32,7 +32,7 @@ const root = ReactDOM.createRoot(
 root.render(
   <Provider store={store}>
     <QueryClientProvider client={client}>
-      <ReactQueryDevtools />
+      {/* <ReactQueryDevtools /> */}
       <GlobalStyles />
       <Router>
         <App />

@@ -19,6 +19,7 @@ routes.post(
 
       return res.status(StatusCodes.CREATED).json({ token });
     } catch (err) {
+      console.error(err);
       return next(err);
     }
   }

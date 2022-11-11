@@ -1,5 +1,6 @@
 import { SurveyModel } from "@models";
 import { Monitor } from "@models/types";
+import { getTimezoneDate } from "@utils";
 import Express from "express";
 import { StatusCodes } from "http-status-codes";
 
@@ -25,6 +26,8 @@ routes.post(
         },
         userId: basic._id,
         monitorId: monitor._id,
+        createdAt: getTimezoneDate(new Date(Date.now())),
+        updatedAt: getTimezoneDate(new Date(Date.now())),
       });
 
       return res.status(StatusCodes.CREATED).json();

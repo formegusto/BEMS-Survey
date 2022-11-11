@@ -17,6 +17,9 @@ export interface IBasicInfo {
   numOfPeople: number;
   workingTime: number;
 
+  buildingId?: number;
+  unitId?: number;
+
   createdAt?: Date;
   updatedAt?: Date;
 }
@@ -35,6 +38,9 @@ export class BasicInfo implements IBasicInfo {
   position!: string;
   numOfPeople!: number;
   workingTime!: number;
+
+  buildingId?: number;
+  unitId?: number;
 
   createdAt?: Date;
   updatedAt?: Date;
@@ -59,11 +65,14 @@ export class BasicInfo implements IBasicInfo {
       expiresIn: "1h",
     });
 
-    await MonitorModel.create({
-      token,
-      userId: this._id,
-      startAt: Date.now(),
-    });
+    if (this.buildingId && this.unitId)
+      await MonitorModel.create({
+        token,
+        userId: this._id,
+        startAt: getTimezoneDate(new Date(Date.now())),
+        buildingId: this.buildingId,
+        unitId: this.unitId,
+      });
 
     return token;
   }
@@ -99,6 +108,10 @@ export class BasicInfo implements IBasicInfo {
       createdAt: getTimezoneDate(new Date(Date.now())),
       updatedAt: getTimezoneDate(new Date(Date.now())),
     });
-    return new BasicInfo(document.toObject());
+    return new BasicInfo({
+      ...document.toObject(),
+      buildingId: basicInfo.buildingId,
+      unitId: basicInfo.unitId,
+    });
   }
 }

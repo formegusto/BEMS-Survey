@@ -5,6 +5,8 @@ const MonitorSchema = new Schema<IMonitor>(
   {
     token: { type: String, required: true },
     userId: { type: Schema.Types.ObjectId, required: true },
+    buildingId: { type: Number, required: true },
+    unitId: { type: Number, required: true },
     startAt: { type: Date },
     doneAt: { type: Date },
   },

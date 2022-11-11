@@ -1,4 +1,5 @@
 import { ResponseError } from "@routes/error";
+import { getTimezoneDate } from "@utils";
 import { StatusCodes } from "http-status-codes";
 import { Schema } from "mongoose";
 import { MonitorModel } from ".";
@@ -7,6 +8,8 @@ export interface IMonitor {
   _id?: Schema.Types.ObjectId | string;
   token: string;
   userId: Schema.Types.ObjectId | string;
+  buildingId: number;
+  unitId: number;
 
   startAt: Date;
   doneAt?: Date;
@@ -16,6 +19,9 @@ export class Monitor implements IMonitor {
   _id?: Schema.Types.ObjectId | string;
   token!: string;
   userId!: Schema.Types.ObjectId | string;
+
+  buildingId!: number;
+  unitId!: number;
 
   startAt!: Date;
   doneAt?: Date;
@@ -38,7 +44,7 @@ export class Monitor implements IMonitor {
   async setDone() {
     await MonitorModel.updateOne(
       { _id: this._id! },
-      { $set: { doneAt: Date.now() } }
+      { $set: { doneAt: getTimezoneDate(new Date(Date.now())) } }
     );
   }
 }

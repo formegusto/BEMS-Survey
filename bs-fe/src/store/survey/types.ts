@@ -19,6 +19,9 @@ export interface FBasicInfo {
   position: string;
   numOfPeople: string;
   workingTime: string;
+
+  buildingId: number;
+  unitId: number;
 }
 
 export interface BasicInfo extends FBasicInfo {
@@ -38,3 +41,4 @@ export interface InputProps<T extends FieldValues> {
 }
 
 export const INIT_BASICINFO = "survey/basic_info";
+export const INIT_TYPE = "survey/type";
